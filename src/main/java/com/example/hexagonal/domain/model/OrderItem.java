@@ -1,6 +1,7 @@
 package com.example.hexagonal.domain.model;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class OrderItem {
@@ -9,21 +10,21 @@ public class OrderItem {
     private Long id;
     private String product;
     private int quantity;
-    private double price;
+    private BigDecimal price;
 
     public OrderItem(){}
 
-    public OrderItem(String product, int quantity, double price) {
+    public OrderItem(String product, int quantity, BigDecimal price) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
