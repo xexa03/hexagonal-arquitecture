@@ -1,8 +1,8 @@
-package com.example.hexagonal.application.rest;
+package com.example.hexagonal.adapters.in.web;
 
+import com.example.hexagonal.application.OrderService;
 import com.example.hexagonal.domain.model.Order;
 import com.example.hexagonal.domain.model.OrderItem;
-import com.example.hexagonal.domain.service.OrderService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
@@ -12,7 +12,7 @@ import java.util.List;
 @Path("/orders")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class OrderResource {
+public class OrderController {
 
     @Inject
     OrderService orderService;
