@@ -1,20 +1,17 @@
-package com.example.hexagonal.application.rest;
+package com.example.hexagonal.adapters.in.web;
 import com.example.hexagonal.domain.model.Order;
 import com.example.hexagonal.domain.model.OrderItem;
 import io.quarkus.test.junit.QuarkusTest;
-import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
-import io.restassured.RestAssured;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @QuarkusTest
-public class OrderResourceTest {
+public class OrderControlleTest {
 
     @Test
     public void testCreateEndPoint(){
