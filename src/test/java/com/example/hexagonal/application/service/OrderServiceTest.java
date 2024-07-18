@@ -33,7 +33,7 @@ class OrderServiceTest {
 
     @Test
     void testSave(){
-        Order order = new Order(LocalDateTime.now(), "status");
+        Order order = new Order(1L, "desc",LocalDateTime.now());
         when(orderPort.save(any(Order.class))).thenReturn(order);
 
         Order savedOrder = orderService.save(order);
@@ -45,8 +45,8 @@ class OrderServiceTest {
     @Test
     void testFindAll(){
         List<Order> orders = new ArrayList<>();
-        orders.add(new Order(LocalDateTime.now(), "desc1"));
-        orders.add(new Order(LocalDateTime.now(), "desc2"));
+        orders.add(new Order(1L,"desc1",LocalDateTime.now()));
+        orders.add(new Order(2L, "desc2",LocalDateTime.now()));
         when(orderPort.findAll()).thenReturn(orders);
 
         List<Order> foundOrders = orderService.findAll();
@@ -58,7 +58,7 @@ class OrderServiceTest {
 
     @Test
     void testFindById(){
-        Order order = new Order(LocalDateTime.now(), "status");
+        Order order = new Order(1L, "desc",LocalDateTime.now());
 
         when(orderPort.findById(1L)).thenReturn(Optional.of(order));
 

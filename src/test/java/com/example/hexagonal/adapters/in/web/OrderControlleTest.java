@@ -14,7 +14,7 @@ public class OrderControlleTest {
 
     @Test
     public void testCreateEndPoint(){
-        Order order = new Order(LocalDateTime.now(), "PENDING");
+        Order order = new Order(1L, "desc1",LocalDateTime.now());
         given()
                 .contentType("application/json")
                 .body(order)
@@ -27,7 +27,7 @@ public class OrderControlleTest {
 
     @Test
     public void testUpdateOrderStatusEndPoint(){
-        Order order = new Order(LocalDateTime.now(), "PENDING");
+        Order order = new Order(1L, "desc1",LocalDateTime.now());
         given()
                 .contentType("application/json")
                 .body(order)

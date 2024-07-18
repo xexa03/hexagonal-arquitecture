@@ -22,7 +22,8 @@ public class Order {
 
     }
 
-   public Order(LocalDateTime creationDate, String description) {
+   public Order(Long id, String description, LocalDateTime creationDate) {
+        this.id = id;
         this.creationDate = creationDate;
         this.description = description;
    }
