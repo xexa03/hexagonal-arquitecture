@@ -16,19 +16,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime creationDate;
-    private String status;
+    private String description;
 
     public Order(){
 
     }
 
-   public Order(LocalDateTime creationDate, String status) {
+   public Order(LocalDateTime creationDate, String description) {
         this.creationDate = creationDate;
-        this.status = status;
-   }
-
-   public void updateStatus(String status) {
-        this.status = status;
+        this.description = description;
    }
 
     public Long getId() {
@@ -47,11 +43,11 @@ public class Order {
         this.creationDate = creationDate;
     }
 
-    public String getStatus() {
-        return status;
+    public String getDescription() {
+        return description;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
