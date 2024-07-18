@@ -16,4 +16,6 @@ public interface OrderPort {
 
     void deleteById(Long id);
 
+    Order update(Order order);
+
 }

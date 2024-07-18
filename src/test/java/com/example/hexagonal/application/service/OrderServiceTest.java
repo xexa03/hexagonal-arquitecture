@@ -2,6 +2,7 @@ package com.example.hexagonal.application.service;
 
 import com.example.hexagonal.application.ports.out.OrderPort;
 import com.example.hexagonal.domain.model.Order;
+import com.example.hexagonal.domain.model.OrderStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +34,7 @@ class OrderServiceTest {
 
     @Test
     void testSave(){
-        Order order = new Order(1L, "desc",LocalDateTime.now());
+        Order order = new Order(1L, "desc",LocalDateTime.now(), OrderStatus.PENDING,new ArrayList<>());
         when(orderPort.save(any(Order.class))).thenReturn(order);
 
         Order savedOrder = orderService.save(order);
@@ -45,8 +46,8 @@ class OrderServiceTest {
     @Test
     void testFindAll(){
         List<Order> orders = new ArrayList<>();
-        orders.add(new Order(1L,"desc1",LocalDateTime.now()));
-        orders.add(new Order(2L, "desc2",LocalDateTime.now()));
+        orders.add(new Order(1L,"desc1",LocalDateTime.now(), OrderStatus.PENDING,new ArrayList<>()));
+        orders.add(new Order(2L, "desc2",LocalDateTime.now(), OrderStatus.PENDING,new ArrayList<>()));
         when(orderPort.findAll()).thenReturn(orders);
 
         List<Order> foundOrders = orderService.findAll();
@@ -58,7 +59,7 @@ class OrderServiceTest {
 
     @Test
     void testFindById(){
-        Order order = new Order(1L, "desc",LocalDateTime.now());
+        Order order = new Order(1L, "desc",LocalDateTime.now(), OrderStatus.PENDING,new ArrayList<>());
 
         when(orderPort.findById(1L)).thenReturn(Optional.of(order));
 
@@ -76,6 +77,17 @@ class OrderServiceTest {
         orderService.deleteById(1L);
 
         verify(orderPort,times(1)).deleteById(1L);
+    }
+
+    @Test
+    void testUpdate(){
+        Order order = new Order(1L, "desc",LocalDateTime.now(), OrderStatus.PENDING,new ArrayList<>());
+        when(orderPort.update(any(Order.class))).thenReturn(order);
+
+        Order updateOrder = orderService.update(order);
+
+        assertEquals(updateOrder.getDescription(), order.getDescription());
+        verify(orderPort,times(1)).save(order);
     }
 
 }

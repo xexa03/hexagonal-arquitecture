@@ -35,4 +35,9 @@ public class OrderService implements OrderUseCase {
         orderPort.deleteById(id);
     }
 
+    @Override
+    public Order update(Order order) {
+        return orderPort.update(order);
+    }
+
 }

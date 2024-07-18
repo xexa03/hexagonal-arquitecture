@@ -1,13 +1,11 @@
 package com.example.hexagonal.domain.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.OneToMany;
 
-import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import com.example.hexagonal.domain.model.OrderItem;
 
 @Entity
 @Table(name = "orders")
@@ -17,16 +15,23 @@ public class Order {
     private Long id;
     private LocalDateTime creationDate;
     private String description;
+    private OrderStatus status;
+
+    private List<OrderItem> orderItems;
 
     public Order(){
 
     }
 
-   public Order(Long id, String description, LocalDateTime creationDate) {
+   public Order(Long id, String description, LocalDateTime creationDate, OrderStatus status,
+                List<OrderItem> orderItems) {
         this.id = id;
         this.creationDate = creationDate;
         this.description = description;
+        this.status = status;
+        this.orderItems = orderItems;
    }
+
 
     public Long getId() {
         return id;
@@ -42,6 +47,22 @@ public class Order {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
     public String getDescription() {

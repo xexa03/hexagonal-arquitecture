@@ -41,4 +41,9 @@ public class JpaOrderRepository implements OrderPort {
     public void deleteById(Long id) {
         em.remove(em.find(Order.class, id));
     }
+
+    @Override
+    public Order update(Order order) {
+        return em.merge(order);
+    }
 }

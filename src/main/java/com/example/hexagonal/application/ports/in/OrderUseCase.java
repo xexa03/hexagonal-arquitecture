@@ -14,4 +14,6 @@ public interface OrderUseCase {
     Optional<Order> findById(Long id);
 
     void deleteById(Long id);
+
+    Order update(Order order);
 }
